@@ -1,0 +1,18 @@
+<div id="open-menu-icon" class="main-menu-icon">
+    <span class="material-symbols-outlined">chevron_right</span>
+</div>
+<div id="main-menu" class="main-menu">
+    <span id="close-menu-icon" class="material-symbols-outlined close-menu">chevron_left</span>
+    <a th:href="@{index}">Entreprise</a>
+    <a th:href="@{invoices}">Factures</a>
+</div>
+<script>
+    const openMenuIcon = document.getElementById('open-menu-icon')
+    openMenuIcon.addEventListener('click', () => {
+        document.getElementById('main-menu').style.display = 'flex'
+    })
+    const closeMenuIcon = document.getElementById('close-menu-icon')
+    closeMenuIcon.addEventListener('click', () => {
+        document.getElementById('main-menu').style.display = 'none'
+    })
+</script>

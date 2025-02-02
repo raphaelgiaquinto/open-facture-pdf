@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fr">
+    <div th:replace="~{global-head.html}"></div>
+    <body>
+        <div th:replace="~{menu.html}"></div>
+        <div class="new-invoice-container">
+            <div class="new-invoice-container__title">
+                <h2>Nouvelle facture</h2>
+                <h4>Renseignez les informations de facturation</h4>
+            </div>
+            <div class="new-invoice-container__infos">
+                <label>
+                    Numéro de facture
+                    <input id="invoiceNumber" required type="text">
+                </label>
+                <label>
+                    Date de facturation
+                    <input id="invoiceDate" required type="text">
+                </label>
+                <label>
+                    Nom du client
+                    <input id="clientName" required type="text">
+                </label>
+                <label>
+                    Adresse client
+                    <input id="clientAddress" type="text">
+                </label>
+                <label>
+                    Contact client
+                    <input id="clientContact" type="text">
+                </label>
+                <label>
+                    Prestation facturée
+                    <input id="service" type="text">
+                </label>
+                <label>
+                    Moyen(s) de paiement
+                    <input id="payments" type="text">
+                </label>
+                <label>
+                    Montant HT
+                    <input id="amountNoTaxes" type="number" min="0">
+                </label>
+                <label>
+                    Quantité
+                    <input id="quantity" type="number" min="1">
+                </label>
+                <label>
+                    TVA %
+                    <input id="vat" type="number" min="0">
+                </label>
+                <label>
+                    Remise
+                    <input id="discount" type="number" min="0">
+                </label>
+                <label>
+                    Montant TVA
+                    <input disabled id="amountOfVAT" type="number" min="0">
+                </label>
+                <label>
+                    Montant Total HT
+                    <input disabled id="totalAmountNoTaxes" type="number" min="0">
+                </label>
+                <label>
+                    Montant Total TTC
+                    <input disabled id="totalAmountWithTaxes" type="number" min="0">
+                </label>
+                <button onclick="saveInvoice()">Sauvegarder</button>
+            </div>
+        </div>
+    </body>
+    <script type="application/javascript">
+        const saveInvoice = () => {
+            const invoiceNumber = getValueFromInput('invoiceNumber')
+            const invoiceDate = getValueFromInput('invoiceDate')
+            const clientName = getValueFromInput('clientName')
+            const clientAddress = getValueFromInput('clientAddress')
+            const clientContact = getValueFromInput('clientContact')
+            const service = getValueFromInput('service')
+            const payments = getValueFromInput('payments')
+            const amountNoTaxes = getValueFromInput('amountNoTaxes')
+            const quantity = getValueFromInput('quantity')
+            const vat = getValueFromInput('vat')
+            const discount = getValueFromInput('discount')
+
+        }
+
+        const getValueFromInput = (inputId) => {
+            return document.getElementById(inputId)?.value
+        }
+    </script>
+</html>

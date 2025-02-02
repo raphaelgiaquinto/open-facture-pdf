@@ -1,0 +1,30 @@
+.new-invoice-container {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    overflow-y: scroll;
+    max-height: calc(100vh - 100px);
+}
+
+.new-invoice-container__title h2 {
+    color: #1d5c91;
+    font-weight: 500;
+}
+
+.new-invoice-container__title h4 {
+    color: #6f7173;
+    font-weight: 400;
+}
+
+.new-invoice-container__infos {
+    display: flex;
+    flex-direction: column;
+}
+
+.new-invoice-container__infos label {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 18px;
+}

@@ -1,0 +1,48 @@
+
+.main-menu {
+    position: absolute;
+    top: 0;
+    display: none;
+    flex-direction: column;
+    width: 45%;
+    height: 100vh;
+    padding: 8px 0 0 12px;
+    background: #031c31;
+    transform: translateX(-100%);
+    animation-duration: 0.5s;
+    animation-name: menu-anim;
+    animation-fill-mode: forwards;
+    max-width: 200px;
+}
+
+.main-menu a{
+    color: white;
+    margin-bottom: 4px;
+    font-size: 1.2rem;
+    font-weight: 200;
+    font-family: system-ui;
+    text-decoration: none;
+}
+
+.main-menu-icon {
+    margin-top: 8px;
+}
+
+.material-symbols-outlined {
+    font-size: 40px;
+}
+
+@keyframes menu-anim {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0%);
+    }
+}
+
+.close-menu {
+    margin-left: auto;
+    color: white;
+}

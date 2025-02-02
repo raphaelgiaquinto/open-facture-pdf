@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fr">
+    <div th:replace="~{global-head.html}"></div>
+<body>
+    <div th:replace="~{menu.html}"></div>
+    <div class="enterprise-container">
+        <div class="enterprise-container__title">
+            <h2>Entreprise</h2>
+            <h4>Coordonnées et informations légales</h4>
+        </div>
+        <div class="enterprise-container__infos">
+            <label>
+                Raison sociale
+                <input id="name" required type="text">
+            </label>
+            <label>
+                SIREN
+                <input id="siren" required type="text">
+            </label>
+            <label>
+                Adresse
+                <input id="address" required type="text">
+            </label>
+            <label>
+                N°TVA intracommunautaire
+                <input id="vatMatriculation" type="text">
+            </label>
+            <label>
+                Contact
+                <input id="contact" type="text">
+            </label>
+            <button onclick="EnterpriseModule.saveEnterprise()">Sauvegarder</button>
+        </div>
+    </div>
+</body>
+<script type="application/javascript">
+    const EnterpriseModule = {}
+
+    EnterpriseModule.preloadInvoicesIndex = () => {
+        const invoicesIndex = localStorage.getItem('invoicesIndex')
+        if (!invoicesIndex) {
+            localStorage.setItem('invoicesIndex', JSON.stringify(0))
+            console.log('A new index has been created for storing invoices')
+        } else {
+            console.log('An index already exists for stored invoices')
+        }
+    }
+
+    EnterpriseModule.mountEnterpriseData = () => {
+        if (localStorage.getItem('enterprise')) {
+            const enterprise = JSON.parse(localStorage.getItem('enterprise'))
+            EnterpriseModule.updateInputField('name', enterprise?.name)
+            EnterpriseModule.updateInputField('siren', enterprise?.siren)
+            EnterpriseModule.updateInputField('address', enterprise?.address)
+            EnterpriseModule.updateInputField('vatMatriculation', enterprise?.vatMatriculation)
+            EnterpriseModule.updateInputField('contact', enterprise?.contact)
+        }
+    }
+
+    EnterpriseModule.saveEnterprise = () => {
+        const name = document.getElementById('name').value
+        const siren = document.getElementById('siren').value
+        const address = document.getElementById('address').value
+        const vatMatriculation = document.getElementById('vatMatriculation').value
+        const contact = document.getElementById('contact').value
+        const enterprise = {
+            name,
+            siren,
+            address,
+            vatMatriculation,
+            contact
+        }
+        localStorage.setItem('enterprise', JSON.stringify(enterprise))
+    }
+
+    EnterpriseModule.updateInputField = (inputId, value) => {
+        document.getElementById(inputId).value = value
+    }
+
+    EnterpriseModule.preloadInvoicesIndex()
+    EnterpriseModule.mountEnterpriseData()
+</script>
+</html>
